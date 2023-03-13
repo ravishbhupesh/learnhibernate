@@ -19,38 +19,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "POST")
+
 /*
- * @NamedEntityGraph(name = "post-entity-graph", attributeNodes = {
- * 
- * @NamedAttributeNode("subject"),
- * 
- * @NamedAttributeNode("user"),
- * 
- * @NamedAttributeNode("comments") })
- */
+@NamedEntityGraph(name = "post-entity-graph", attributeNodes = { @NamedAttributeNode("subject"),
+		@NamedAttributeNode("user"), @NamedAttributeNode("comments") })
+*/
 
-@NamedEntityGraph(name = "post-entity-graph-with-comments-and-users", attributeNodes = {
-
-		@NamedAttributeNode("subject"),
-
+@NamedEntityGraph(name = "post-entity-graph-with-comments-and-users", attributeNodes = { @NamedAttributeNode("subject"),
 		@NamedAttributeNode("user"),
-
 		@NamedAttributeNode(value = "comments", subgraph = "comments-subgraph") }, subgraphs = {
-
-				@NamedSubgraph(name = "comments-subgraph", attributeNodes = {
-
-						@NamedAttributeNode("user") }) })
+				@NamedSubgraph(name = "comments-subgraph", attributeNodes = { @NamedAttributeNode("user") }) })
 
 /*
- * @NamedEntityGraph(name = "post-entity-graph-with-comments-and-users",
- * attributeNodes = {
- * 
- * @NamedAttributeNode("subject"),
- * 
- * @NamedAttributeNode("user"),
- * 
- * @NamedAttributeNode("comments") } )
+@NamedEntityGraph(name = "post-entity-graph-with-comments-and-users", attributeNodes = {
+		@NamedAttributeNode("subject"),
+		@NamedAttributeNode("user"),
+		@NamedAttributeNode("comments") })
  */
+
 public class Post {
 
 	@Id

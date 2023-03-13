@@ -35,13 +35,13 @@ public class Application {
 		properties.put("javax.persistence.fetchgraph", entityGraph);
 		
 		Post post = em.find(Post.class,  Long.valueOf(1), properties);
-		System.out.println("post.getSubject() : " + post.getSubject());
+		System.out.println("User '" + post.getUser().getName() + "' create a post with subject '" + post.getSubject() + "'");
 		
-		System.out.println("post.getComments().get(0).getPost() : " + post.getComments().get(0).getPost());
+		System.out.println("User '" + post.getComments().get(0).getUser().getName() + "' comments '" + post.getComments().get(0).getReply() + "'");
 		
-		System.out.println("post.getComments().get(0).getUser().getName() : " + post.getComments().get(0).getUser().getName());
+		System.out.println("User '" + post.getComments().get(1).getUser().getName() + "' comments '" + post.getComments().get(1).getReply() + "'");
 		
-		em.getTransaction().commit();;
+		em.getTransaction().commit();
 		
 		emf.close();
 	}
